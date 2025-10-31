@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Fond Informatique</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        body {
+            background: linear-gradient(120deg, #456eb9 0%, #6e9bea 100%);
+            width: 100vw;
+            height: 100vh;
+        }
+        #circuit-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            filter: blur(2px) opacity(0.7);
+        }
+    </style>
+</head>
+<body>
+    <svg id="circuit-bg" width="100vw" height="100vh" viewBox="0 0 1920 1080" preserveAspectRatio="none">
+        <defs>
+            <linearGradient id="circuitBlue" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#66a6ff"/>
+                <stop offset="100%" stop-color="#00fff7"/>
+            </linearGradient>
+            <filter id="circuitGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+        <!-- Traces principales du circuit -->
+        <polyline points="0,120 300,120 400,320 700,320 700,520 1100,520 1100,820 1500,820 1500,1020 1920,970" stroke="url(#circuitBlue)" stroke-width="8" fill="none" filter="url(#circuitGlow)">
+            <animate attributeName="stroke" values="url(#circuitBlue);#00fff7;url(#circuitBlue)" dur="8s" repeatCount="indefinite"/>
+        </polyline>
+        <polyline points="0,400 500,400 900,600 1300,600 1300,800 1920,820" stroke="#00fff7" stroke-width="6" fill="none" filter="url(#circuitGlow)">
+            <animate attributeName="stroke" values="#00fff7;#66a6ff;#00fff7" dur="10s" repeatCount="indefinite"/>
+        </polyline>
+        <polyline points="0,900 500,900 500,700 1000,700 1000,400 1600,400 1600,200 1920,220" stroke="#66a6ff" stroke-width="5" fill="none" filter="url(#circuitGlow)">
+            <animate attributeName="stroke" values="#66a6ff;#00fff7;#66a6ff" dur="12s" repeatCount="indefinite"/>
+        </polyline>
+        <polyline points="1920,200 1700,500 1300,500 1300,900 700,900 700,1080 0,1080" stroke="#00fff7" stroke-width="4" fill="none" filter="url(#circuitGlow)">
+            <animate attributeName="stroke" values="#00fff7;#66a6ff;#00fff7" dur="14s" repeatCount="indefinite"/>
+        </polyline>
+        <!-- Branches secondaires -->
+        <polyline points="400,0 400,200 600,400" stroke="#b2bec3" stroke-width="3" fill="none" opacity="0.7"/>
+        <polyline points="1520,0 1520,400 1700,400" stroke="#b2bec3" stroke-width="3" fill="none" opacity="0.7"/>
+        <polyline points="0,700 400,700 600,900" stroke="#b2bec3" stroke-width="3" fill="none" opacity="0.7"/>
+        <polyline points="1920,900 1700,900 1500,1080" stroke="#b2bec3" stroke-width="3" fill="none" opacity="0.7"/>
+        <!-- Puces électroniques -->
+        <rect x="290" y="390" width="20" height="20" fill="#222f3e" stroke="#00fff7" stroke-width="2" rx="4"/>
+        <rect x="890" y="790" width="24" height="24" fill="#222f3e" stroke="#66a6ff" stroke-width="2" rx="5"/>
+        <rect x="1490" y="690" width="18" height="18" fill="#222f3e" stroke="#00b894" stroke-width="2" rx="3"/>
+        <rect x="1190" y="390" width="18" height="18" fill="#222f3e" stroke="#00fff7" stroke-width="2" rx="3"/>
+        <rect x="400" y="890" width="16" height="16" fill="#222f3e" stroke="#66a6ff" stroke-width="2" rx="3"/>
+        <!-- Points de connexion -->
+        <circle cx="300" cy="200" r="7" fill="#00fff7" filter="url(#circuitGlow)">
+            <animate attributeName="opacity" values="1;0.3;1" dur="2.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="600" cy="400" r="7" fill="#66a6ff" filter="url(#circuitGlow)">
+            <animate attributeName="opacity" values="1;0.3;1" dur="3.2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="900" cy="600" r="7" fill="#00fff7" filter="url(#circuitGlow)">
+            <animate attributeName="opacity" values="1;0.3;1" dur="2.1s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="1200" cy="800" r="7" fill="#66a6ff" filter="url(#circuitGlow)">
+            <animate attributeName="opacity" values="1;0.3;1" dur="2.8s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="1500" cy="700" r="7" fill="#00b894" filter="url(#circuitGlow)">
+            <animate attributeName="opacity" values="1;0.3;1" dur="2.3s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="400" cy="900" r="7" fill="#66a6ff" filter="url(#circuitGlow)">
+            <animate attributeName="opacity" values="1;0.3;1" dur="2.7s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="1190" cy="390" r="7" fill="#00fff7" filter="url(#circuitGlow)">
+            <animate attributeName="opacity" values="1;0.3;1" dur="2.9s" repeatCount="indefinite"/>
+        </circle>
+        <!-- Signaux lumineux animés -->
+        <circle r="10" fill="#00fff7">
+            <animateMotion dur="8s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" path="M100,200 300,200 300,400 600,400 600,600 900,600 900,800 1200,800 1200,1000 1800,1000"/>
+        </circle>
+        <circle r="7" fill="#66a6ff">
+            <animateMotion dur="10s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" path="M400,100 400,300 700,300 700,500 1000,500 1000,700 1500,700"/>
+        </circle>
+        <circle r="6" fill="#00fff7">
+            <animateMotion dur="12s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" path="M200,900 400,900 400,700 800,700 800,400 1200,400 1200,200 1700,200"/>
+        </circle>
+        <circle r="5" fill="#66a6ff">
+            <animateMotion dur="14s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1" path="M1720,100 1720,400 1500,400 1500,800 1100,800 1100,1000 300,1000"/>
+        </circle>
+    </svg>
+</body>
+</html>
